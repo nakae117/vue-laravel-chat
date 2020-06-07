@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 *.lock
+laravel-echo-server.json
 .env
 .env.backup
 .phpunit.result.cache

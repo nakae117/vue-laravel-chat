@@ -1,5 +1,5 @@
 {
-	"authHost": "https://vue.chat.devs",
+	"authHost": "",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [],
 	"database": "redis",
@@ -15,8 +15,8 @@
 	"protocol": "https",
 	"socketio": {},
 	"secureOptions": 67108864,
-	"sslCertPath": "C:/laragon/etc/ssl/laragon.crt",
-	"sslKeyPath": "C:/laragon/etc/ssl/laragon.key",
+	"sslCertPath": "",
+	"sslKeyPath": "",
 	"sslCertChainPath": "",
 	"sslPassphrase": "",
 	"subscribers": {
