@@ -6,7 +6,7 @@ import Echo from "laravel-echo"
 window.io = require('socket.io-client')
 window.axios = require('axios')
 
-const files = require.context('./', true, /\.vue$/i)
+const files = require.context('./test_components', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.use(Vuetify)

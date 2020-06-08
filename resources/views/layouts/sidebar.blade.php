@@ -6,39 +6,30 @@
 	dark
 	clipped
 	fixed
-	:width="230"
+	:width="260"
 	:mobile-break-point="767"
 >
-	<v-list class="pa-0" dense>
-		{{-- <v-list-item to="/"> --}}
-		<v-list-item>
-			<v-tooltip right>
-				<template v-slot:activator="{ on }">
-					<v-list-item-icon v-on="on">
-						<v-icon>dashboard</v-icon>
-					</v-list-item-icon>
-				</template>
-				<span>Dashboard</span>
-			</v-tooltip>
+	<v-list
+		class="pa-0"
+		dense
+		two-line
+	>
+		@foreach($users as $user)
+			<v-divider></v-divider>
+			
+			<v-list-item
+				:to="{ name: 'chat', params: { id: '{{ $user->id }}'} }"
+				dense
+			>
+				<v-list-item-avatar>
+					<v-img src="{{ $user->photo }}"></v-img>
+				</v-list-item-avatar>
 
-			<v-list-item-content>
-				<v-list-item-title>Dashboard</v-list-item-title>
-			</v-list-item-content>
-		</v-list-item>
-		
-		<v-list-item href="{{ route('test.echo') }}">
-			<v-tooltip right>
-				<template v-slot:activator="{ on }">
-					<v-list-item-icon v-on="on">
-						<v-icon>dashboard</v-icon>
-					</v-list-item-icon>
-				</template>
-				<span>Laravel Echo test</span>
-			</v-tooltip>
-
-			<v-list-item-content>
-				<v-list-item-title>Laravel Echo test</v-list-item-title>
-			</v-list-item-content>
-		</v-list-item>
+				<v-list-item-content>
+					<v-list-item-title v-html="'{{ $user->name }}'"></v-list-item-title>
+					<v-list-item-subtitle v-html="'{{ $user->username }}'"></v-list-item-subtitle>
+				</v-list-item-content>
+			</v-list-item>
+		@endforeach
 	</v-list>
 </v-navigation-drawer>

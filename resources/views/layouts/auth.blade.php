@@ -6,6 +6,8 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>{{ config('app.name', 'Laravel') }}</title>
+	<!-- Scripts -->
+	<script src="{{ asset('js/auth.js') }}" defer></script>
 	<!-- Styles -->
 	<link href="{{ asset('css/auth.css') }}" rel="stylesheet">
 </head>
@@ -15,7 +17,5 @@
 			@yield('content')
 		</v-app>
 	</div>
-	<!-- Scripts -->
-	<script src="{{ asset('js/auth.js') }}" defer></script>
 </body>
 </html>

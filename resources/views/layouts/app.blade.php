@@ -16,7 +16,7 @@
 		<v-app id="inspire" class="app-wrap">
 			@include('layouts.sidebar')
 			@include('layouts.navbar')
-			<v-content class="bg-dashboard app-content">
+			<v-content class="app-content">
 				@yield('content')
 			</v-content>
 		</v-app>
