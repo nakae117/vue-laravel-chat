@@ -14,11 +14,20 @@
 <body>
 	<div id="app">
 		<v-app id="inspire" class="app-wrap">
+			<init-app
+				:users='@json($users)'
+				:chats='@json($chats)'
+			></init-app>
+
 			@include('layouts.sidebar')
 			@include('layouts.navbar')
+
 			<v-content class="app-content">
+				{{-- @{{dialogUsers}} --}}
 				@yield('content')
 			</v-content>
+			
+			@include('layouts.dialogs')
 		</v-app>
 	</div>
 </body>

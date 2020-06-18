@@ -7,17 +7,26 @@
 	fixed
 	flat
 >
-	<v-app-bar-nav-icon></v-app-bar-nav-icon>
+	<v-app-bar-nav-icon @click="dialogUsers = !dialogUsers">
+		<v-icon>add</v-icon>
+	</v-app-bar-nav-icon>
 
-	<v-toolbar-title>{{ config('app.name', 'Laravel') }}</v-toolbar-title>
+	<v-toolbar-items>
+		<v-btn width="208px" text :to="{ name: 'home' }">
+			{{ config('app.name', 'Laravel') }}
+		</v-btn>
+	</v-toolbar-items>
+
+	<v-btn text v-if="currentChat">
+		<v-avatar height="35px" width="35px">
+			<img :src="currentChat.receiver.photo" :alt="currentChat.receiver.name">
+		</v-avatar>
+		<span v-text="currentChat.receiver.name"></span>
+	</v-btn>
 
 	<v-spacer></v-spacer>
 	@auth
 		<v-toolbar-items>
-			<v-btn
-				text
-				href="{{ route('test.echo') }}"
-			>Echo test</v-btn>
 			<v-menu
 				bottom
 				transition="slide-y-transition"
@@ -39,7 +48,7 @@
 					<v-list>
 						<v-list-item avatar>
 							<v-list-item-avatar>
-								<img src="{{ asset('photo/'.auth()->user()->photo) }}" alt="{{ auth()->user()->name }}">
+								<img src="{{ asset(auth()->user()->photo) }}" alt="{{ auth()->user()->name }}">
 							</v-list-item-avatar>
 
 							<v-list-item-content>
@@ -56,9 +65,24 @@
 						<v-btn
 							flat
 							dark
+							color="lime text--darken-1"
+							:to="{ name: 'home' }"
+							class="px-4"
+							height="30px"
+						>
+							<v-icon small>email</v-icon>
+							Chat
+						</v-btn>
+
+						<v-btn
+							flat
+							dark
 							href="{{ route('logout') }}"
 							color="lime text--darken-1"
-							onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							height="30px"
+							onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+						>
+							<v-icon small>lock</v-icon>
 							{{ __('Logout') }}
 						</v-btn>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Chat;
 
 class HomeController extends Controller {
 	/**
@@ -21,8 +22,14 @@ class HomeController extends Controller {
 	 * @return \Illuminate\Contracts\Support\Renderable
 	 */
 	public function index(){
-		$users = User::where('id', '!=',auth()->user()->id)->paginate(20);
-		return view('index', compact('users'));
+		$users = User::where('id', '!=',auth()->user()->id)->get();
+
+		$chats = Chat::where('sender_id', auth()->user()->id)
+					->with('receiver:users.id,users.first_name,users.last_name,users.photo,users.username')
+					->get();
+
+		// dd($chats[0]->receiver);
+		return view('index', compact('users', 'chats'));
 	}
 
 	/**

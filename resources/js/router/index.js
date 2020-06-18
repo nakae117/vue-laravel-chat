@@ -8,10 +8,11 @@ const routes = [{
 		name: 'home',
 		component: require('../views/Home').default
 	},{
-		path: '/chat/:id',
+		path: '/chat/open/:token',
 		name: 'chat',
 		component: require('../views/Chat').default
-	}]
+	}
+]
 
 const router = new VueRouter({
 	mode: 'history',

@@ -14,22 +14,22 @@
 		dense
 		two-line
 	>
-		@foreach($users as $user)
-			<v-divider></v-divider>
+		<v-divider></v-divider>
 			
-			<v-list-item
-				:to="{ name: 'chat', params: { id: '{{ $user->id }}'} }"
-				dense
-			>
-				<v-list-item-avatar>
-					<v-img src="{{ $user->photo }}"></v-img>
-				</v-list-item-avatar>
+		<v-list-item
+			dense
+			v-for="(chat, key) in chats"
+			:key="`chat-${key}`"
+			:to="{ name: 'chat', params: { token: chat.token } }"
+		>
+			<v-list-item-avatar>
+				<v-img :src="chat.receiver.photo"></v-img>
+			</v-list-item-avatar>
 
-				<v-list-item-content>
-					<v-list-item-title v-html="'{{ $user->name }}'"></v-list-item-title>
-					<v-list-item-subtitle v-html="'{{ $user->username }}'"></v-list-item-subtitle>
-				</v-list-item-content>
-			</v-list-item>
-		@endforeach
+			<v-list-item-content>
+				<v-list-item-title v-html="chat.receiver.name"></v-list-item-title>
+				<v-list-item-subtitle v-html="chat.receiver.username"></v-list-item-subtitle>
+			</v-list-item-content>
+		</v-list-item>
 	</v-list>
 </v-navigation-drawer>
