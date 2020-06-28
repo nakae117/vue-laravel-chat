@@ -12,9 +12,11 @@
 		>
 			{{-- <v-toolbar-title>Usuarios</v-toolbar-title> --}}
 			<v-text-field
+				prepend-inner-icon="person"
 				placeholder="Buscar usuario..."
 				hide-details
 				type="text"
+				append-icon="search"
 			></v-text-field>
 
 			<v-spacer></v-spacer>
@@ -30,7 +32,7 @@
 		</v-toolbar>
 
 		<v-card-text
-			class="content--users"
+			class="content--users px-0"
 		>
 			<v-list-item
 				{{-- :to="{ name: 'chat', params: { id: '{{ $user->id }}'} }" --}}
@@ -40,7 +42,7 @@
 				@click="createChat(user.id)"
 			>
 				<v-list-item-avatar>
-					<v-img :src="user.photo"></v-img>
+					<v-img :src="user.url_photo"></v-img>
 				</v-list-item-avatar>
 
 				<v-list-item-content>
@@ -49,6 +51,8 @@
 				</v-list-item-content>
 			</v-list-item>
 		</v-card-text>
+
+		<v-divider></v-divider>
 
 		<v-card-actions>
 			<v-spacer></v-spacer>

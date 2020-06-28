@@ -50,7 +50,7 @@
 									@error('first_name') :error-messages="'{{ $message }}'" @enderror
 									name="first_name"
 									label="Nombre"
-									prepend-icon="person"
+									prepend-icon="looks_one"
 									value="{{ old('first_name') }}"
 								></v-text-field>
 								
@@ -59,7 +59,7 @@
 									@error('last_name') :error-messages="'{{ $message }}'" @enderror
 									name="last_name"
 									label="Apellido"
-									prepend-icon="person"
+									prepend-icon="looks_two"
 									value="{{ old('last_name') }}"
 								></v-text-field>
 								

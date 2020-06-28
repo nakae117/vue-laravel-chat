@@ -26,6 +26,13 @@ Route::group(['prefix' => 'chat'], function(){
 	Route::get('/create/{user_id}', 'ChatController@create')->name('create.chat');
 });
 
+Route::group(['prefix' => 'perfil'], function(){
+	Route::get('/', 'HomeController@index')->name('perfil');
+	Route::put('/update', 'UserController@update')->name('perfil.update');
+	Route::put('/update-password', 'UserController@updatePassword')->name('perfil.update.password');
+	Route::post('/imagen', 'UserController@profilePicture')->name('perfil.update.picture');
+});
+
 Route::group(['prefix' => 'test'], function(){
 	Route::get('/laravel-echo', 'TestEchoController@index')->name('test.echo');
 	Route::post('/send-echo', 'TestEchoController@sendEcho')->name('send.echo');

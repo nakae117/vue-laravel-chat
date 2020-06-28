@@ -3,7 +3,6 @@
 @section('content')
 	{{-- <v-text-field
 		type="text"
-		v-model="message"
 		placeholder="Escribe un message"
 		required
 		outlined
@@ -14,9 +13,9 @@
 		name="message"
 		color="cyan"
 	>
-		<template v-slot:append>
-			<v-icon>send</v-icon>
+		<template v-slot:prepend-inner>
+			<v-icon>looks_two</v-icon>
 		</template>
 	</v-text-field> --}}
-	<router-view />
+	<router-view/>
 @endsection

@@ -15,6 +15,7 @@
 	<div id="app">
 		<v-app id="inspire" class="app-wrap">
 			<init-app
+				:profile='@json(auth()->user())'
 				:users='@json($users)'
 				:chats='@json($chats)'
 			></init-app>

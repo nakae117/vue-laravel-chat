@@ -12,7 +12,7 @@ class ChatController extends Controller {
 		$chat = Chat::where('sender_id', auth()->user()->id)->where('receiver_id', $user)->first();
 
 		if($chat){
-			$response[0]['receiver']['photo'] = $chat->receiver->photo;
+			$response[0]['receiver']['url_photo'] = $chat->receiver->url_photo;
 			$response[0]['receiver']['name'] = $chat->receiver->name;
 			$response[0]['receiver']['username'] = $chat->receiver->username;
 			$response[0]['token'] = $chat->token;
@@ -39,7 +39,7 @@ class ChatController extends Controller {
 				'open'        => false
 			]);
 			
-			$response[0]['receiver']['photo'] = $chat->receiver->photo;
+			$response[0]['receiver']['url_photo'] = $chat->receiver->url_photo;
 			$response[0]['receiver']['name'] = $chat->receiver->name;
 			$response[0]['receiver']['username'] = $chat->receiver->username;
 			$response[0]['token'] = $chat->token;

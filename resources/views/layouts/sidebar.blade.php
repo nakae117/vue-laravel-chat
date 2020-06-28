@@ -23,7 +23,7 @@
 			:to="{ name: 'chat', params: { token: chat.token } }"
 		>
 			<v-list-item-avatar>
-				<v-img :src="chat.receiver.photo"></v-img>
+				<v-img :src="chat.receiver.url_photo"></v-img>
 			</v-list-item-avatar>
 
 			<v-list-item-content>

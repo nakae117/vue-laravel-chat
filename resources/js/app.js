@@ -11,15 +11,18 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 Vue.use(Vuetify)
 
-window.Echo = new Echo({
+/* window.Echo = new Echo({
 	broadcaster: 'socket.io',
 	host: window.location.hostname + ':6001'
-})
+}) */
 
 const app = new Vue({
 	el: '#app',
 	store,
 	router,
+	mounted(){
+		//
+	},
 	data: () => ({
 		dialogUsers: false,
 	}),
@@ -35,8 +38,8 @@ const app = new Vue({
 		chats(){
 			return this.$store.state.chat.data
 		},
-		currentChat(){
-			return this.$store.state.chat.currentChat
+		userProfile() {
+			return this.$store.state.profile.user
 		},
 	},
 	methods: {

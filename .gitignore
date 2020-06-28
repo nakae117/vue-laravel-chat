@@ -5,7 +5,7 @@
 /public/css/*
 /public/js/*
 /public/fonts/*
-/public/photo/*.jpg
+/public/photo/profile
 /public/storage
 /storage/*.key
 /vendor

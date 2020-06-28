@@ -51,7 +51,7 @@ export default {
 	data: () => ({
 		message: '',
 		loadingChat: false,
-		echo: window.Echo,
+		// echo: window.Echo,
 		// chat: null
 	}),
 	watch: {

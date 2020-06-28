@@ -11,6 +11,14 @@ const routes = [{
 		path: '/chat/open/:token',
 		name: 'chat',
 		component: require('../views/Chat').default
+	},{
+		path: '/perfil', // Ruta en español
+		name: 'perfil',
+		component: require('../views/Profile').default
+	},{
+		path: '/profile', // Ruta en inglés
+		name: 'profile',
+		component: require('../views/Profile').default
 	}
 ]
 

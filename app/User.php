@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
 	use Notifiable;
-	protected $appends = array('name');
+	protected $appends = array('name', 'url_photo');
 
 	/**
 	 * The attributes that are mass assignable.
@@ -42,6 +42,17 @@ class User extends Authenticatable {
 	 */
 	public function getNameAttribute(){
 		return $this->first_name.' '.$this->last_name;
+	}
+
+	/**
+	 * Retorna la url del photo.
+	 */
+	public function getUrlPhotoAttribute(){
+		if($this->photo){
+			return asset($this->photo);
+		} else {
+			return asset('photo/default.svg');
+		}
 	}
 
 	public function chats(){

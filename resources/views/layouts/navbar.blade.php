@@ -17,12 +17,7 @@
 		</v-btn>
 	</v-toolbar-items>
 
-	<v-btn text v-if="currentChat">
-		<v-avatar height="35px" width="35px">
-			<img :src="currentChat.receiver.photo" :alt="currentChat.receiver.name">
-		</v-avatar>
-		<span v-text="currentChat.receiver.name"></span>
-	</v-btn>
+	<current-chat></current-chat>
 
 	<v-spacer></v-spacer>
 	@auth
@@ -33,27 +28,31 @@
 				offset-y
 				:nudge-width="200"
 				max-width="350"
-				:close-on-content-click="false"
+				v-if="userProfile"
 			>
 				<template v-slot:activator="{ on }">
 					<v-btn
 						text
 						v-on="on"
 					>
-						Perfil
+						<v-avatar height="35px" width="35px">
+							<img :src="userProfile.url_photo" :alt="userProfile.name">
+						</v-avatar>
+
+						@{{ userProfile.name }}
 					</v-btn>
 				</template>
 
 				<v-card>
 					<v-list>
-						<v-list-item avatar>
+						<v-list-item>
 							<v-list-item-avatar>
-								<img src="{{ asset(auth()->user()->photo) }}" alt="{{ auth()->user()->name }}">
+								<img :src="userProfile.url_photo" :alt="userProfile.name">
 							</v-list-item-avatar>
 
 							<v-list-item-content>
-								<v-list-item-title>{{ auth()->user()->name }}</v-list-item-title>
-								<v-list-item-sub-title>{{  auth()->user()->email }}</v-list-item-sub-title>
+								<v-list-item-title>@{{ userProfile.name }}</v-list-item-title>
+								<v-list-item-subtitle>@{{ userProfile.email }}</v-list-item-subtitle>
 							</v-list-item-content>
 						</v-list-item>
 					</v-list>
@@ -62,20 +61,21 @@
 
 					<v-card-actions>
 						<v-spacer></v-spacer>
+						
 						<v-btn
-							flat
+							text
 							dark
 							color="lime text--darken-1"
-							:to="{ name: 'home' }"
+							:to="{ name: 'perfil' }"
 							class="px-4"
 							height="30px"
 						>
-							<v-icon small>email</v-icon>
-							Chat
+							<v-icon small>person</v-icon>
+							Perfil
 						</v-btn>
 
 						<v-btn
-							flat
+							text
 							dark
 							href="{{ route('logout') }}"
 							color="lime text--darken-1"
